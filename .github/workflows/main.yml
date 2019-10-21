@@ -1,0 +1,22 @@
+name: Github-Actions
+
+on: [push]
+
+jobs:
+  ci-test:
+    name: Build Freenet
+    runs-on: ubuntu-latest
+
+    steps:
+    # - uses: actions/checkout@master
+    #   with:
+    #     ref: PKGBUILD
+
+    - name: makepkg
+      uses: skydrome/freenet-aur@master
+
+    - name: upload
+      uses: actions/upload-artifact@master
+      with:
+        name: freenet-x86_64
+        path: /home/runner/work/freenet-aur/freenet-aur

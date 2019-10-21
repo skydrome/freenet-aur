@@ -1,0 +1,5 @@
+name: 'Build PKGBUILD'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
