@@ -1,0 +1,282 @@
+diff --git a/build.gradle b/build.gradle
+index db7d1b5ec..03f0f01b2 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -7,7 +7,6 @@
+ buildscript {
+     dependencies {
+         apply from: 'dependencies.gradle'
+-        classpath scriptDependencies.witness
+     }
+ }
+ 
+@@ -15,10 +14,10 @@ plugins {
+     id "java"
+     id "maven-publish"
+ 
+-    id "com.github.spotbugs"     version "1.7.1"
+-    id "org.sonarqube"           version "2.7"
+-    id "com.adarshr.test-logger" version "1.6.0"
+-    id "org.ajoberstar.grgit"    version "3.1.1"
++    id "com.github.spotbugs"     version "2.0.0"
++    id "org.sonarqube"           version "2.8"
++    id "com.adarshr.test-logger" version "2.0.0"
++    id "org.ajoberstar.grgit"    version "4.0.0-rc.1"
+ }
+ 
+ repositories {
+@@ -225,19 +224,3 @@ publishing {
+         }
+     }
+ }
+-
+-// Create the verification array with: gradle -q calculateChecksums
+-apply plugin: 'witness'
+-dependencyVerification {
+-    verify = [
+-      'org.bouncycastle:bcprov-jdk15on:1.59:bcprov-jdk15on-1.59.jar:1c31e44e331d25e46d293b3e8ee2d07028a67db011e74cb2443285aed1d59c85',
+-      'net.java.dev.jna:jna-platform:4.2.2:jna-platform-4.2.2.jar:32aca873a4cb14721d939bbc8287a828919c05e8e1040b3fe8290f6128cdecca',
+-      'net.java.dev.jna:jna:4.2.2:jna-4.2.2.jar:1f38af54e06c6e6f6dbf39ba2c052b952dea5dddb4871127b34639ddeb11bdbe',
+-      'org.freenetproject:freenet-ext:29:freenet-ext-29.jar:32f2b3d6beedf54137ea2f9a3ebef67666d769f0966b08cd17fd7db59ba4d79f',
+-      'junit:junit:4.12:junit-4.12.jar:59721f0805e223d84b90677887d9ff567dc534d7c502ca903c0c2b17f05c116a',
+-      'org.mockito:mockito-core:1.9.5:mockito-core-1.9.5.jar:f97483ba0944b9fa133aa29638764ddbeadb51ec3dbc02074c58fa2caecd07fa',
+-      'org.hamcrest:hamcrest-library:1.3:hamcrest-library-1.3.jar:711d64522f9ec410983bd310934296da134be4254a125080a0416ec178dfad1c',
+-      'org.hamcrest:hamcrest-core:1.3:hamcrest-core-1.3.jar:66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9',
+-      'org.objenesis:objenesis:1.0:objenesis-1.0.jar:c5694b55d92527479382f254199b3c6b1d8780f652ad61e9ca59919887f491a8',
+-    ]
+-}
+diff --git a/checksum.xml b/checksum.xml
+new file mode 100644
+index 000000000..a262fcd6e
+--- /dev/null
++++ b/checksum.xml
+@@ -0,0 +1,53 @@
++<?xml version='1.0' encoding='utf-8'?>
++<dependency-verification version='1'>
++  <trust-requirement pgp='GROUP' checksum='NONE' />
++  <ignored-keys />
++  <trusted-keys>
++    <trusted-key id='5ad66315fc018797' group='com.beust' />
++    <trusted-key id='1756b920eecf0e90' group='com.github.spotbugs' />
++    <trusted-key id='59a252fb1199d873' group='com.google.code.findbugs' />
++    <trusted-key id='7a01b0f236e5430f' group='com.google.code.gson' />
++    <trusted-key id='72475fd306b9cab7' group='com.googlecode.javaewah' />
++    <trusted-key id='4ece492b63e38acf' group='com.h3xstream.findsecbugs' />
++    <trusted-key id='44ce7bf2825ea2cd' group='com.ibm.icu' />
++    <trusted-key id='a50569c7ca7fa1f0' group='com.jcraft' />
++    <trusted-key id='9daadc1c9fcc82d0' group='commons-io' />
++    <trusted-key id='1861c322c56014b2' group='commons-lang' />
++    <trusted-key id='4044edf1bb73efea' group='jaxen' />
++    <trusted-key id='efe8086f9e93774e' group='junit' />
++    <trusted-key id='4db7bc57dfdbcea4' group='net.java.dev.jna' />
++    <trusted-key id='1d185615d0a84648' group='net.sf.saxon' />
++    <trusted-key id='82de7be82166e84e' group='net.sourceforge.pmd' />
++    <trusted-key id='c84125c13bf6f2f2' group='org.ajoberstar.grgit' />
++    <trusted-key id='6b1b008864323b92' group='org.antlr' />
++    <trusted-key id='86fdc7e2a11262cb' group='org.apache.bcel' />
++    <trusted-key id='3faad2cd5ecbb314' group='org.apache.commons' />
++    <trusted-key id='85911f425ec61b51' group='org.apiguardian' />
++    <trusted-key id='b341ddb020fcb6ab' group='org.bouncycastle' />
++    <trusted-key id='79e193516be7998f' group='org.dom4j' />
++    <trusted-key id='5b05ccde140c2876' group='org.eclipse.jgit' />
++    <trusted-key id='ecdfea3cb4493b94' group='org.fusesource.jansi' />
++    <trusted-key id='a6adfc93ef34893e' group='org.hamcrest' />
++    <trusted-key id='cb43338e060cf9fa' group='org.jacoco' />
++    <trusted-key id='85911f425ec61b51' group='org.junit.platform' />
++    <trusted-key id='85911f425ec61b51' group='org.junit.vintage' />
++    <trusted-key id='a1b4460d8ba7b9af' group='org.mockito' />
++    <trusted-key id='7c7d8456294423ba' group='org.objenesis' />
++    <trusted-key id='85911f425ec61b51' group='org.opentest4j' />
++    <trusted-key id='5f69ad087600b22c' group='org.ow2.asm' />
++    <trusted-key id='2c7b12f2a511e325' group='org.slf4j' />
++    <trusted-key id='cfca4a29d26468de' group='org.sonarsource.scanner.api' />
++    <trusted-key id='cfca4a29d26468de' group='org.sonarsource.scanner.gradle' />
++  </trusted-keys>
++  <dependencies>
++    <dependency group='com.adarshr' module='gradle-test-logger-plugin' version='2.0.0'>
++      <sha512>709A8996611A81BAE64BD7D0FEF4F653786D47CD9A70E4CCF07430CB5E75082EC2502A86A4F1F5C87E1DD4EE3C1B78E1AA8C4A8B8731223394F02281E6D4480</sha512>
++    </dependency>
++    <dependency group='gradle.plugin.com.github.spotbugs' module='spotbugs-gradle-plugin' version='2.0.0'>
++      <sha512>B3BFAD07E6A3D4D73CBCE802D8614CF4AC84E589166D243D41028DC077F84C027DF4D514F145360405F37DA73A8F2E7B65D90877A9EE1151174D2440530F9051</sha512>
++    </dependency>
++    <dependency group='org.freenetproject' module='freenet-ext' version='29'>
++      <sha512>9735F1CE4EC11F074484F6AC9692E995EC245BC74211E74B228374B08B2BCD9ECC9F564A969A86D5FBB11DE1291FFAFAD419D2DECC22F1C18A2EE16FC59BBDB1</sha512>
++    </dependency>
++  </dependencies>
++</dependency-verification>
+diff --git a/dependencies.gradle b/dependencies.gradle
+index 7a0d30184..11163f9eb 100644
+--- a/dependencies.gradle
++++ b/dependencies.gradle
+@@ -1,25 +1,23 @@
+ ext {
+ 
+     scriptDependencies = [
+-        // github.com/akwizgran/gradle-witness
+-        witness : files('gradle/gradle-witness.jar'),
+-        spotbugs: 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.7.1'
++        spotbugs: 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0',
+     ]
+ 
+     tools = [
+-        jacoco       : '0.8.3',
+-        pmd          : '6.13.0',
+-        spotbugs     : '4.0.0-beta1',
++        jacoco       : '0.8.5',
++        pmd          : '6.18.0',
++        spotbugs     : '4.0.0-beta4',
+     ]
+ 
+     def version = [
+-        bcprov       : '1.59',
++        bcprov       : '1.64',
+         jna          : '4.2.2',
+         mockito      : '1.9.5',
+         hamcrest     : '1.3',
+         jUnit        : '4.12',
+-        jUnitVintage : '5.4.2',
+-        findSecBugs  : '1.9.0',
++        jUnitVintage : '5.5.2',
++        findSecBugs  : '1.10.0',
+     ]
+ 
+     def libs = [
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+index 7da2d7b11..d4bc4f5f9 100644
+--- a/gradle/wrapper/gradle-wrapper.properties
++++ b/gradle/wrapper/gradle-wrapper.properties
+@@ -1,6 +1,6 @@
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.4-bin.zip
+-distributionSha256Sum=c8c17574245ecee9ed7fe4f6b593b696d1692d1adbfef425bef9b333e3a0e8de
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.0-rc-1-bin.zip
++distributionSha256Sum=e73ab0c91f71e051f9798c6c89e0b9c0ecc95f0877e683554425c68835998509
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+diff --git a/gradlew b/gradlew
+index b0d6d0ab5..2fe81a7d9 100755
+--- a/gradlew
++++ b/gradlew
+@@ -7,7 +7,7 @@
+ # you may not use this file except in compliance with the License.
+ # You may obtain a copy of the License at
+ #
+-#      http://www.apache.org/licenses/LICENSE-2.0
++#      https://www.apache.org/licenses/LICENSE-2.0
+ #
+ # Unless required by applicable law or agreed to in writing, software
+ # distributed under the License is distributed on an "AS IS" BASIS,
+@@ -125,8 +125,8 @@ if $darwin; then
+     GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
+ fi
+ 
+-# For Cygwin, switch paths to Windows format before running java
+-if $cygwin ; then
++# For Cygwin or MSYS, switch paths to Windows format before running java
++if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
+     APP_HOME=`cygpath --path --mixed "$APP_HOME"`
+     CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
+     JAVACMD=`cygpath --unix "$JAVACMD"`
+@@ -154,19 +154,19 @@ if $cygwin ; then
+         else
+             eval `echo args$i`="\"$arg\""
+         fi
+-        i=$((i+1))
++        i=`expr $i + 1`
+     done
+     case $i in
+-        (0) set -- ;;
+-        (1) set -- "$args0" ;;
+-        (2) set -- "$args0" "$args1" ;;
+-        (3) set -- "$args0" "$args1" "$args2" ;;
+-        (4) set -- "$args0" "$args1" "$args2" "$args3" ;;
+-        (5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
+-        (6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
+-        (7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
+-        (8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
+-        (9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++        0) set -- ;;
++        1) set -- "$args0" ;;
++        2) set -- "$args0" "$args1" ;;
++        3) set -- "$args0" "$args1" "$args2" ;;
++        4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
+     esac
+ fi
+ 
+@@ -175,14 +175,9 @@ save () {
+     for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
+     echo " "
+ }
+-APP_ARGS=$(save "$@")
++APP_ARGS=`save "$@"`
+ 
+ # Collect all arguments for the java command, following the shell quoting and substitution rules
+ eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
+ 
+-# by default we should be in the correct project dir, but when run from Finder on Mac, the cwd is wrong
+-if [ "$(uname)" = "Darwin" ] && [ "$HOME" = "$PWD" ]; then
+-  cd "$(dirname "$0")"
+-fi
+-
+ exec "$JAVACMD" "$@"
+diff --git a/settings.gradle b/settings.gradle
+new file mode 100644
+index 000000000..a52073320
+--- /dev/null
++++ b/settings.gradle
+@@ -0,0 +1,49 @@
++// See https://github.com/vlsi/vlsi-release-plugins
++buildscript {
++  dependencies {
++    classpath('com.github.vlsi.gradle:checksum-dependency-plugin:1.35.0') {
++      // Gradle ships kotlin-stdlib which is good enough
++      exclude(group: "org.jetbrains.kotlin", module:"kotlin-stdlib")
++    }
++  }
++  repositories {
++    gradlePluginPortal()
++  }
++}
++
++// Note: we need to verify the checksum for checksum-dependency-plugin itself
++def expectedSha512 = [
++  '43BC9061DFDECA0C421EDF4A76E380413920E788EF01751C81BDC004BD28761FBD4A3F23EA9146ECEDF10C0F85B7BE9A857E9D489A95476525565152E0314B5B':
++    'bcpg-jdk15on-1.62.jar',
++  '2BA6A5DEC9C8DAC2EB427A65815EB3A9ADAF4D42D476B136F37CD57E6D013BF4E9140394ABEEA81E42FBDB8FC59228C7B85C549ED294123BF898A7D048B3BD95':
++    'bcprov-jdk15on-1.62.jar',
++  '17DAAF511BE98F99007D7C6B3762C9F73ADD99EAB1D222985018B0258EFBE12841BBFB8F213A78AA5300F7A3618ACF252F2EEAD196DF3F8115B9F5ED888FE827':
++    'okhttp-4.1.0.jar',
++  '93E7A41BE44CC17FB500EA5CD84D515204C180AEC934491D11FC6A71DAEA761FB0EECEF865D6FD5C3D88AAF55DCE3C2C424BE5BA5D43BEBF48D05F1FA63FA8A7':
++    'okio-2.2.2.jar',
++  '748480D8C328C7F3D4923C22DDEC796CDDB62207BC851DD2CE10B678F7F98FB6AFDF1CD5AB2F239E8D831D3DD333F340323006123A07231F4E165CC3F0E16B6C':
++    'checksum-dependency-plugin-1.35.0.jar'
++]
++
++static def sha512(File file) {
++  def md = java.security.MessageDigest.getInstance('SHA-512')
++  file.eachByte(8192) { buffer, length ->
++     md.update(buffer, 0, length)
++  }
++  new BigInteger(1, md.digest()).toString(16).toUpperCase()
++}
++
++def violations =
++  buildscript.configurations.classpath
++    .resolve()
++    .sort { it.name }
++    .collectEntries { [(it): sha512(it)] }
++    .findAll { !expectedSha512.containsKey(it.value) }
++    .collect { file, sha512 ->  "SHA-512(${file.name}) = $sha512 ($file)" }
++    .join("\n  ")
++
++if (!violations.isEmpty()) {
++    throw new GradleException("Buildscript classpath has non-whitelisted files:\n  $violations")
++}
++
++apply plugin: 'com.github.vlsi.checksum-dependency'
