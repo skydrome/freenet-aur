@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-sudo chown -R makepkg /build /github/workspace /github/home /home/makepkg
+sudo chown -R makepkg /build /github/workspace /github/home /home
 mkdir -p /home/makepkg/.config
 touch /home/makepkg/.jgitconfig
 
