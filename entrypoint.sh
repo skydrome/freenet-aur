@@ -10,6 +10,6 @@ cd /build
 git clone --depth 1 "https://aur.archlinux.org/freenet.git" .
 sed -i "s|'java-service-wrapper'||" PKGBUILD
 
-gpg --recv-keys FD6C57F9
+curl -s https://freenetproject.org/assets/keyring.gpg |gpg --import -
 PKGDEST="/github/workspace" \
     makepkg -si --noconfirm
